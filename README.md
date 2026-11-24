@@ -10,10 +10,11 @@
 
 | App | Domain | Platform | Key Tech Stack |
 | :--- | :--- | :--- | :--- |
-| **TOICE** | AI Task Collaboration App | Android & iOS | Flutter, Socket.IO, Cashfree, Apple IAP, FCM |
-| **SAALUVER** | Patient Healthcare Platform | Android & iOS | Flutter, Provider, JWT Auth, Cashfree |
-| **INTERNSHARKS** | Recruitment Discovery App | Android & iOS | Flutter, GetX, Dio, REST API, SharedPreferences |
-| **LE PONT** | Hyperlocal Delivery App | Android & iOS | Flutter, Google Maps API, GPS Geolocation |
+| **TOICE** | AI Task Collaboration App | Android & iOS | Flutter, Socket.IO, Cashfree, Apple IAP, StoreKit |
+| **SAALUVARS** | Patient Healthcare Platform | Android | Flutter, Provider, JWT Auth, Cashfree |
+| **INTERNSHARKS** | Recruitment Discovery App | Android | Flutter, GetX, Dio, REST API, SharedPreferences |
+| **LE PONT** | Hyperlocal Delivery App | Android | Flutter, Google Maps API, GPS Geolocation |
+| **RELIE ENQUIRY** | Business Inquiry CRM | Android | Flutter, Firebase Auth, Cloud Firestore |
 
 ---
 

@@ -235,7 +235,7 @@ class ResumeModal extends StatelessWidget {
   }
 
   Widget _buildContactItem({
-    required IconData icon,
+    required dynamic icon,
     required String label,
     required bool isDark,
     VoidCallback? onTap,
@@ -248,11 +248,17 @@ class ResumeModal extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
-              icon,
-              size: 14,
-              color: isDark ? AppTheme.accentCyan : AppTheme.accentPurple,
-            ),
+            icon is IconData
+                ? Icon(
+                    icon,
+                    size: 14,
+                    color: isDark ? AppTheme.accentCyan : AppTheme.accentPurple,
+                  )
+                : FaIcon(
+                    icon as FaIconData,
+                    size: 14,
+                    color: isDark ? AppTheme.accentCyan : AppTheme.accentPurple,
+                  ),
             const SizedBox(width: 6),
             Text(
               label,
@@ -308,7 +314,7 @@ class ResumeModal extends StatelessWidget {
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
           ),
-          icon: const Icon(FontAwesomeIcons.whatsapp, size: 14),
+          icon: const FaIcon(FontAwesomeIcons.whatsapp, size: 14),
           label: const Text('WhatsApp', style: TextStyle(fontSize: 12)),
         ),
         OutlinedButton.icon(
@@ -319,7 +325,7 @@ class ResumeModal extends StatelessWidget {
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
           ),
-          icon: const Icon(FontAwesomeIcons.linkedin, size: 14),
+          icon: const FaIcon(FontAwesomeIcons.linkedin, size: 14),
           label: const Text('LinkedIn', style: TextStyle(fontSize: 12)),
         ),
       ],
@@ -362,10 +368,10 @@ class ResumeModal extends StatelessWidget {
         _buildSectionTitle('Professional Summary', Icons.person_rounded, isDark),
         const SizedBox(height: 10),
         Text(
-          'Results-driven Flutter Developer with 2+ years of hands-on experience developing, scaling, and deploying high-performance cross-platform mobile apps for Android and iOS using Flutter and Dart. Strong technical expertise in reactive state management (Provider, GetX), REST API integration with Dio/HTTP interceptors, Firebase ecosystem, secure JWT authentication with refresh token rotation, and payment gateways (Cashfree, Apple IAP). Proven track record across 4 live production apps in AI collaboration, telemedicine, and hyperlocal logistics.',
+          'Results-driven Flutter Developer with 2+ years of hands-on experience developing, scaling, and deploying high-performance cross-platform Android, iOS, and Web applications using Flutter and Dart. Strong expertise in reactive state management (Provider, GetX), responsive website and web application development, REST API integration via Dio with automated token renewal, Firebase services, secure JWT authentication with access/refresh tokens, and payment gateway integrations (Cashfree, Apple In-App Purchases / StoreKit). Proven track record delivering production applications across AI collaboration tools, healthcare telemedicine, recruitment platforms, and delivery logistics with successful Google Play Store and Apple App Store releases.',
           style: TextStyle(
-            fontSize: 13.5,
-            height: 1.6,
+            fontSize: 13,
+            height: 1.55,
             color: isDark ? AppTheme.textSecondary : AppTheme.lightTextSecondary,
           ),
         ),
@@ -382,30 +388,34 @@ class ResumeModal extends StatelessWidget {
         _buildExperienceItem(
           company: 'Doubletap Innovations and Technologies Pvt. Ltd.',
           location: 'Chennai, Tamil Nadu',
-          role: 'Mobile App Developer — Full-Time',
-          period: 'Dec 2025 – Present',
+          role: 'Flutter Developer | Full-Time',
+          period: 'December 2025 – Present',
           isDark: isDark,
           points: [
-            'Architect and engineer scalable cross-platform mobile applications for Android and iOS adhering to Material 3 and Apple HIG.',
-            'Manage app state and isolate business logic using the Provider pattern with clean, maintainable architecture.',
-            'Integrate Cashfree Payment Gateway for online transactions, subscription checkouts, and secure verification.',
-            'Implement secure JWT authentication with automated refresh token rotation and REST APIs with HTTP interceptors.',
-            'Integrate Google Maps API and geolocation services; resolve Android (Gradle) and iOS (Xcode, CocoaPods) build constraints.',
-            'Maintain source code, feature branching workflows, pull requests, and code reviews using Git and GitHub.',
+            'Architect and engineer scalable cross-platform mobile apps for Android and iOS with Flutter and Dart, spearheading core client applications: Saaluver (Healthcare), Toice (AI Task Collaboration), and Internsharks (Recruitment Discovery).',
+            'Implement robust application architecture and reactive state management using Provider and GetX patterns.',
+            'Integrate Cashfree Payment Gateway and Apple In-App Purchases (StoreKit) for multi-tier subscriptions, payment processing, and automated webhook verification.',
+            'Implement secure JWT authentication, access token management, and refresh token handling using Flutter Secure Storage.',
+            'Integrate REST APIs via Dio with HTTP interceptors for automatic token renewal, request signing, and structured error logging.',
+            'Engineer Google Maps API integration with live location tracking, distance calculations, and native geolocation services.',
+            'Develop healthcare modules (appointment booking, refills, lab tests, AI chatbot) and resolve Gradle/Xcode build constraints for store submissions.',
+            'Manage Git/GitHub workflows, feature branching, pull requests, and collaborative code reviews across agile sprints.',
           ],
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 18),
         _buildExperienceItem(
-          company: 'Relie Tech Software Solution',
-          location: 'Puducherry',
-          role: 'Flutter Developer Intern',
-          period: 'Aug 2024 – Nov 2025',
+          company: 'RelieTech',
+          location: 'Puducherry, India',
+          role: 'Full-Stack Developer (Flutter & Firebase)',
+          period: 'November 2024 – November 2025',
           isDark: isDark,
           points: [
-            'Built production Flutter applications for Android and iOS with responsive, 60 FPS widget trees and clean UI.',
-            'Configured Firebase backend services, including Authentication, Cloud Firestore real-time DB, and Cloud Storage.',
-            'Integrated REST APIs, handled asynchronous data streams, and resolved platform-specific edge cases with DevTools.',
-            'Collaborated with senior engineers on release testing, QA bug resolution, and Google Play Store deployment.',
+            'Developed cross-platform mobile applications for Android and iOS using Flutter and Dart, and engineered responsive web applications and dynamic websites using Flutter Web, HTML5, and CSS3.',
+            'Engineered and deployed production client applications: Le Pont (Hyperlocal Delivery) and Relie Enquiry (Business Inquiry CRM on Play Store).',
+            'Designed responsive user interfaces adapting smoothly across mobile, tablet, and desktop browser viewports using Material Design 3 and Cupertino widgets.',
+            'Configured Firebase backend services (Authentication, Cloud Firestore real-time DB, Cloud Storage) for scalable application data.',
+            'Integrated REST APIs and managed asynchronous frontend-backend data communication with optimized local caching.',
+            'Engineered reusable Flutter widget libraries, conducted QA bug resolution, app signing, and production release to the Google Play Store.',
           ],
         ),
       ],
@@ -524,53 +534,65 @@ class ResumeModal extends StatelessWidget {
   Widget _buildProjects(bool isDark) {
     final projects = [
       {
-        'title': 'TOICE – AI Task Collaboration App',
-        'tech': 'Flutter, Socket.IO, Cashfree, Apple IAP, FCM',
+        'title': 'TOICE – AI-Powered Task Management & Collaboration App',
+        'tech': 'Flutter, Dart, Socket.IO, JWT Authentication, Cashfree, Apple IAP, StoreKit',
         'platform': 'Android & iOS',
-        'playStore': 'https://play.google.com/store/apps/details?id=com.toice.collaboration',
-        'appStore': 'https://apps.apple.com/app/toice-ai-task/id6470000001',
+        'playStore': 'https://play.google.com/store/apps/details?id=com.doubletap.toice.ai&hl=en_IN',
+        'appStore': 'https://apps.apple.com/in/app/toice-your-voice-tasks/id6770540894',
         'bullets': [
-          'Architected task management system with priority filters, team collaboration workflows, and an AI Task PRD generator.',
-          'Implemented low-latency real-time chat using Socket.IO with media uploads and delivery status indicators.',
-          'Integrated dual subscription monetization via Apple IAP and Cashfree; configured push notifications via FCM.',
-          'Profiled app performance via Flutter DevTools, resolved native platform build constraints, and maintained fluid 60 FPS.',
+          'Developed cross-platform mobile application featuring task creation, team collaboration, and an AI-powered Task PRD generator.',
+          'Integrated REST APIs and Socket.IO for low-latency bidirectional real-time communication and asynchronous media uploads.',
+          'Implemented secure JWT authentication with access and refresh tokens for protected API sessions and session lifecycle management.',
+          'Implemented dual monetization via Apple In-App Purchases (StoreKit) for iOS subscriptions and Cashfree for Android; completed App Store submission.',
         ],
       },
       {
-        'title': 'SAALUVER – Patient Healthcare Platform',
-        'tech': 'Flutter, Provider, JWT, Cashfree',
-        'platform': 'Android & iOS',
-        'playStore': 'https://play.google.com/store/apps/details?id=com.saaluver.patient',
-        'appStore': 'https://apps.apple.com/app/saaluver-healthcare/id6470000002',
+        'title': 'SAALUVARS – Healthcare Patient Management Platform',
+        'tech': 'Flutter, Dart, Provider, REST APIs, Firebase, Google Maps, Cashfree, JWT Authentication',
+        'platform': 'Android',
+        'playStore': 'https://play.google.com/store/apps/details?id=com.doubletap.saaluvars.patient&hl=en_IN',
+        'appStore': null,
         'bullets': [
-          'Built patient care modules including doctor discovery, appointment booking, lab tests, and pharmacy prescription refills.',
-          'Integrated an intelligent AI healthcare chatbot for guided symptom triage and Cashfree for consultation payments.',
-          'Configured secure session management with JWT authentication and automated refresh token rotation via Provider.',
-          'Implemented laboratory test booking with digital medical reports access and pharmacy order tracking.',
+          'Developed healthcare features for patient registration, hospital discovery, doctor appointment booking, and medical report management.',
+          'Integrated Google Maps API with live location tracking to discover nearby hospitals and book appointments seamlessly.',
+          'Built an intelligent conversational AI healthcare chatbot interface to assist patients with appointment triage and symptom assessment.',
+          'Implemented secure JWT authentication with access/refresh token auto-renewal via Dio, multi-account switching, Cashfree payments, and digital prescription/billing PDF downloads.',
         ],
       },
       {
-        'title': 'INTERNSHARKS – Recruitment Discovery App',
-        'tech': 'Flutter, GetX, Dio, REST API',
-        'platform': 'Android & iOS',
-        'playStore': 'https://play.google.com/store/apps/details?id=com.internsharks.app',
-        'appStore': 'https://apps.apple.com/app/internsharks-jobs/id6470000003',
+        'title': 'INTERNSHARKS – Recruitment & Internship Discovery Network',
+        'tech': 'Flutter, Dart, GetX, Dio, REST APIs, SharedPreferences',
+        'platform': 'Android',
+        'playStore': 'https://play.google.com/store/apps/details?id=com.doubletap.internsharks.ai&hl=en_IN',
+        'appStore': null,
         'bullets': [
-          'Developed candidate and recruiter portals featuring internship vacancy posting, applicant tracking, and candidate filters.',
-          'Architected centralized reactive state using GetX; built Dio HTTP networking with JWT interceptors and error handling.',
-          'Implemented persistent local storage using SharedPreferences for offline session caching and user preferences.',
+          'Developed candidate and recruiter workflows connecting students with active corporate internships through structured opportunity listings.',
+          'Built high-performance home feed and dashboard modules featuring real-time category filtering, vacancy search, and company profiles.',
+          'Architected centralized state and reactive route navigation using GetX; implemented Dio networking with custom JWT interceptors.',
         ],
       },
       {
-        'title': 'LE PONT – Hyperlocal Delivery App',
-        'tech': 'Flutter, Google Maps API, Geolocation',
-        'platform': 'Android & iOS',
-        'playStore': 'https://play.google.com/store/apps/details?id=com.lepont.delivery',
-        'appStore': 'https://apps.apple.com/app/le-pont-hyperlocal/id6470000004',
+        'title': 'LE PONT – Hyperlocal Delivery Application',
+        'tech': 'Flutter, Dart, REST APIs, Google Maps',
+        'platform': 'Android',
+        'playStore': 'https://play.google.com/store/apps/details?id=com.relietech.le_pont&hl=en_IN',
+        'appStore': null,
         'bullets': [
-          'Engineered on-demand pickup and delivery mobile application serving hyperlocal logistics with device GPS geolocation.',
-          'Integrated Google Maps API for automated fare estimation, interactive address selection, and live route tracking timelines.',
-          'Designed intuitive pickup/drop-off location selectors and live order status progression timelines for active deliveries.',
+          'Developed on-demand pickup and delivery mobile application serving local logistics with real-time location selection.',
+          'Integrated Google Maps API for pickup and delivery location selection, route preview, and location-related functionalities.',
+          'Integrated application REST APIs, executed UI testing/debugging, and handled Android build deployment to the Google Play Store.',
+        ],
+      },
+      {
+        'title': 'RELIE ENQUIRY – Business Inquiry & Lead Management CRM',
+        'tech': 'Flutter, Dart, Firebase (Auth, Firestore), Google Play Store',
+        'platform': 'Android',
+        'playStore': 'https://play.google.com/store/apps/details?id=com.relietech.relie_enquiry&hl=en_IN',
+        'appStore': null,
+        'bullets': [
+          'Developed and successfully published a production Android business utility application on the Google Play Store.',
+          'Architected a business inquiry management engine enabling small and medium enterprises to log, categorize, and prioritize customer leads.',
+          'Implemented a proactive lead follow-up reminder system ensuring zero dropped leads, backed by Firebase Firestore real-time sync.',
         ],
       },
     ];
@@ -674,61 +696,64 @@ class ResumeModal extends StatelessWidget {
                 // Store links row
                 Row(
                   children: [
-                    InkWell(
-                      onTap: () => UrlHelper.launchPlayStore(proj['playStore'] as String),
-                      borderRadius: BorderRadius.circular(6),
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF01875F).withValues(alpha: 0.15),
-                          borderRadius: BorderRadius.circular(6),
-                          border: Border.all(color: const Color(0xFF01875F).withValues(alpha: 0.3)),
-                        ),
-                        child: const Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(FontAwesomeIcons.googlePlay, size: 12, color: Color(0xFF01875F)),
-                            SizedBox(width: 6),
-                            Text(
-                              'Google Play',
-                              style: TextStyle(
-                                fontSize: 11,
-                                fontWeight: FontWeight.w700,
-                                color: Color(0xFF01875F),
+                    if (proj['playStore'] != null)
+                      InkWell(
+                        onTap: () => UrlHelper.launchPlayStore(proj['playStore'] as String),
+                        borderRadius: BorderRadius.circular(6),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF01875F).withValues(alpha: 0.15),
+                            borderRadius: BorderRadius.circular(6),
+                            border: Border.all(color: const Color(0xFF01875F).withValues(alpha: 0.3)),
+                          ),
+                          child: const Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              FaIcon(FontAwesomeIcons.googlePlay, size: 12, color: Color(0xFF01875F)),
+                              SizedBox(width: 6),
+                              Text(
+                                'Google Play',
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xFF01875F),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(width: 8),
-                    InkWell(
-                      onTap: () => UrlHelper.launchAppStore(proj['appStore'] as String),
-                      borderRadius: BorderRadius.circular(6),
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                        decoration: BoxDecoration(
-                          color: Colors.blueAccent.withValues(alpha: 0.15),
-                          borderRadius: BorderRadius.circular(6),
-                          border: Border.all(color: Colors.blueAccent.withValues(alpha: 0.3)),
-                        ),
-                        child: const Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(FontAwesomeIcons.apple, size: 13, color: Colors.blueAccent),
-                            SizedBox(width: 6),
-                            Text(
-                              'App Store',
-                              style: TextStyle(
-                                fontSize: 11,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.blueAccent,
+                    if (proj['playStore'] != null && proj['appStore'] != null)
+                      const SizedBox(width: 8),
+                    if (proj['appStore'] != null)
+                      InkWell(
+                        onTap: () => UrlHelper.launchAppStore(proj['appStore'] as String),
+                        borderRadius: BorderRadius.circular(6),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                          decoration: BoxDecoration(
+                            color: Colors.blueAccent.withValues(alpha: 0.15),
+                            borderRadius: BorderRadius.circular(6),
+                            border: Border.all(color: Colors.blueAccent.withValues(alpha: 0.3)),
+                          ),
+                          child: const Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              FaIcon(FontAwesomeIcons.apple, size: 13, color: Colors.blueAccent),
+                              SizedBox(width: 6),
+                              Text(
+                                'App Store',
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.blueAccent,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ),
                   ],
                 ),
               ],
@@ -746,6 +771,10 @@ class ResumeModal extends StatelessWidget {
         'items': 'Flutter, Dart, Android SDK, iOS, Material Design 3, Cupertino, Responsive UI Layouts',
       },
       {
+        'title': 'Web Development',
+        'items': 'Web Applications, Dynamic Websites, Flutter Web, HTML5, CSS3, Responsive Web Layouts',
+      },
+      {
         'title': 'State & Architecture',
         'items': 'Provider, GetX, Clean Architecture Principles, MVC',
       },
@@ -755,11 +784,11 @@ class ResumeModal extends StatelessWidget {
       },
       {
         'title': 'Integrations & Security',
-        'items': 'Cashfree Payment Gateway, Apple IAP, Google Maps API, JWT Authentication, Refresh Tokens, RBAC',
+        'items': 'Cashfree Payment Gateway, Apple IAP (StoreKit), Google Maps API, JWT Authentication, Refresh Tokens, RBAC',
       },
       {
-        'title': 'Tools & Languages',
-        'items': 'Git, GitHub, Android Studio, VS Code, Xcode, Postman, SQLite, SharedPreferences | Java, Python',
+        'title': 'AI & Tools',
+        'items': 'Conversational AI Chatbots, AI Task PRD Integration, Git, GitHub, Android Studio, VS Code, Xcode, Postman',
       },
       {
         'title': 'Languages Known',
@@ -807,23 +836,23 @@ class ResumeModal extends StatelessWidget {
         _buildSectionTitle('Education & Professional Training', Icons.school_rounded, isDark),
         const SizedBox(height: 12),
         _buildEduItem(
-          degree: 'Bachelor of Science in Chemistry (B.Sc. Chemistry) — Aggregate: 70%',
-          institution: 'Government Arts College, Trichy (Bharathidasan University), Tiruchirappalli, TN',
-          status: 'Graduated',
+          degree: 'Bachelor of Science in Chemistry (B.Sc.) — 75% First Class Distinction',
+          institution: 'Government Arts College, Trichy (Bharathidasan University), Tiruchirappalli, India (Aug 2021 – May 2024)',
+          status: 'First Class Distinction',
           isDark: isDark,
         ),
         const SizedBox(height: 8),
         _buildEduItem(
-          degree: 'Full Stack & Mobile Development Training (6 Months)',
-          institution: 'RelieTech, Puducherry',
-          status: 'Specialized in Flutter & Firebase',
+          degree: 'Professional Training in Full-Stack & Mobile Development (Flutter & Firebase)',
+          institution: 'RelieTech, Puducherry, India (May 2024 – Oct 2024)',
+          status: '6 Months Intensive',
           isDark: isDark,
         ),
         const SizedBox(height: 8),
         _buildEduItem(
-          degree: 'Basic Python Certification (3 Months)',
-          institution: 'CSC (Common Service Center), Tamil Nadu',
-          status: 'Core Programming Fundamentals',
+          degree: 'Basic Python Certification — Core Programming Fundamentals & Control Structures',
+          institution: 'CSC (Common Service Center), Puducherry / Tamil Nadu, India',
+          status: '3 Months Certified',
           isDark: isDark,
         ),
       ],

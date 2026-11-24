@@ -219,7 +219,7 @@ class _ContactSectionState extends State<ContactSection> {
   }
 
   Widget _buildContactCard({
-    required IconData icon,
+    required dynamic icon,
     required String title,
     required String value,
     required String actionLabel,
@@ -251,7 +251,11 @@ class _ContactSectionState extends State<ContactSection> {
               color: color.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(12),
             ),
-            child: Icon(icon, color: color, size: 20),
+            child: Center(
+              child: icon is IconData
+                  ? Icon(icon, color: color, size: 20)
+                  : FaIcon(icon as FaIconData, color: color, size: 20),
+            ),
           ),
           const SizedBox(width: 14),
           Expanded(

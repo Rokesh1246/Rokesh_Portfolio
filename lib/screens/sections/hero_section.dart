@@ -234,7 +234,7 @@ class _HeroSectionState extends State<HeroSection> {
         FadeInLeft(
           delay: const Duration(milliseconds: 450),
           child: Text(
-            'Results-driven Flutter Developer with 2+ years of experience engineering high-performance cross-platform mobile apps for Android and iOS. Built 4 live production apps across AI collaboration, telemedicine, hyperlocal delivery, and recruitment.',
+            'Results-driven Flutter Developer with 2+ years of experience engineering high-performance cross-platform mobile apps for Android and iOS. Built 5 live production apps across AI collaboration, telemedicine, hyperlocal delivery, and recruitment.',
             textAlign: isMobile ? TextAlign.center : TextAlign.start,
             style: TextStyle(
               fontSize: isMobile ? 14 : 16,
@@ -506,7 +506,7 @@ class _HeroSectionState extends State<HeroSection> {
   Widget _buildHighlightsGrid(bool isDark, bool isMobile) {
     final highlights = [
       {
-        'value': '4+',
+        'value': '5+',
         'label': 'Live Production Apps',
         'sub': 'Android & iOS Stores',
         'icon': Icons.apps_rounded,
@@ -715,7 +715,7 @@ class _HeroSectionState extends State<HeroSection> {
   }
 
   Widget _buildQuickContactIcon({
-    required IconData icon,
+    required dynamic icon,
     required String label,
     required Color color,
     required bool isDark,
@@ -736,7 +736,10 @@ class _HeroSectionState extends State<HeroSection> {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(icon, size: 14, color: color),
+            if (icon is IconData)
+              Icon(icon, size: 14, color: color)
+            else if (icon is FaIconData)
+              FaIcon(icon, size: 14, color: color),
             const SizedBox(width: 6),
             Text(
               label,

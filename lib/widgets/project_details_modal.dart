@@ -143,28 +143,28 @@ class ProjectDetailsModal extends StatelessWidget {
                       spacing: 12,
                       runSpacing: 10,
                       children: [
-                        _buildStoreButton(
-                          title: 'Google Play Store',
-                          subtitle: 'Android App',
-                          icon: FontAwesomeIcons.googlePlay,
-                          color: const Color(0xFF01875F),
-                          isDark: isDark,
-                          onTap: () => UrlHelper.launchPlayStore(
-                            project['playStore'] as String? ??
-                                'https://play.google.com/store/apps',
+                        if (project['playStore'] != null)
+                          _buildStoreButton(
+                            title: 'Google Play Store',
+                            subtitle: 'Android App',
+                            icon: FontAwesomeIcons.googlePlay,
+                            color: const Color(0xFF01875F),
+                            isDark: isDark,
+                            onTap: () => UrlHelper.launchPlayStore(
+                              project['playStore'] as String,
+                            ),
                           ),
-                        ),
-                        _buildStoreButton(
-                          title: 'Apple App Store',
-                          subtitle: 'iOS App',
-                          icon: FontAwesomeIcons.apple,
-                          color: isDark ? Colors.white : Colors.black87,
-                          isDark: isDark,
-                          onTap: () => UrlHelper.launchAppStore(
-                            project['appStore'] as String? ??
-                                'https://apps.apple.com',
+                        if (project['appStore'] != null)
+                          _buildStoreButton(
+                            title: 'Apple App Store',
+                            subtitle: 'iOS App',
+                            icon: FontAwesomeIcons.apple,
+                            color: isDark ? Colors.white : Colors.black87,
+                            isDark: isDark,
+                            onTap: () => UrlHelper.launchAppStore(
+                              project['appStore'] as String,
+                            ),
                           ),
-                        ),
                       ],
                     ),
 
@@ -316,7 +316,7 @@ class ProjectDetailsModal extends StatelessWidget {
   Widget _buildStoreButton({
     required String title,
     required String subtitle,
-    required IconData icon,
+    required dynamic icon,
     required Color color,
     required bool isDark,
     required VoidCallback onTap,
@@ -340,7 +340,9 @@ class ProjectDetailsModal extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(icon, size: 20, color: color),
+            icon is IconData
+                ? Icon(icon, size: 20, color: color)
+                : FaIcon(icon as FaIconData, size: 20, color: color),
             const SizedBox(width: 12),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,

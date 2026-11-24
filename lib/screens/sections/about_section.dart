@@ -222,12 +222,12 @@ class AboutSection extends StatelessWidget {
           ),
           const SizedBox(height: 16),
 
-          // 4 Production Apps Shipped
+          // 5 Production Apps Shipped
           _buildFeatureCard(
-            title: '4 Live Production Apps',
-            subtitle: 'Android & iOS App Stores',
+            title: '5 Live Production Apps',
+            subtitle: 'Google Play & Apple App Store',
             description:
-                'TOICE (AI Collaboration), SAALUVER (Healthcare), INTERNSHARKS (Recruitment), and LE PONT (Hyperlocal Logistics).',
+                'TOICE (AI Collaboration), SAALUVARS (Healthcare), INTERNSHARKS (Recruitment), LE PONT (Logistics), and RELIE ENQUIRY (CRM).',
             icon: Icons.store_rounded,
             color: AppTheme.accentGreen,
             isDark: isDark,

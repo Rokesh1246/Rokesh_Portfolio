@@ -15,67 +15,74 @@ class ExperienceSection extends StatelessWidget {
 
     final experiences = [
       {
-        'role': 'Mobile App Developer',
+        'role': 'Flutter Developer',
         'type': 'Full-Time',
         'company': 'Doubletap Innovations and Technologies Pvt. Ltd.',
-        'period': 'Dec 2025 – Present',
+        'period': 'December 2025 – Present',
         'location': 'Chennai, Tamil Nadu',
         'color': AppTheme.accentCyan,
         'current': true,
         'points': [
-          'Architect and engineer scalable cross-platform mobile applications for Android and iOS adhering to Material 3 and Apple HIG.',
-          'Manage app state and isolate business logic using the Provider pattern with clean, maintainable architecture.',
-          'Integrate Cashfree Payment Gateway for online transactions, subscription checkouts, and secure verification.',
-          'Implement secure JWT authentication with automated refresh token rotation and REST APIs with HTTP interceptors.',
-          'Integrate Google Maps API and geolocation services; resolve Android (Gradle) and iOS (Xcode, CocoaPods) build constraints.',
-          'Maintain source code, feature branching workflows, pull requests, and code reviews using Git and GitHub.',
+          'Architect and engineer scalable cross-platform mobile apps for Android and iOS with Flutter and Dart, spearheading core client applications: Saaluver (Healthcare), Toice (AI Task Collaboration), and Internsharks (Recruitment Discovery).',
+          'Implement robust application architecture and reactive state management using Provider and GetX patterns.',
+          'Integrate Cashfree Payment Gateway and Apple In-App Purchases (StoreKit) for multi-tier subscriptions, payment processing, and automated webhook verification.',
+          'Implement secure JWT authentication, access token management, and refresh token handling using Flutter Secure Storage.',
+          'Integrate REST APIs via Dio with HTTP interceptors for automatic token renewal, request signing, and structured error logging.',
+          'Engineer Google Maps API integration with live location tracking, distance calculations, and native geolocation services.',
+          'Develop healthcare modules (appointment booking, refills, lab tests, AI chatbot) and resolve Gradle/Xcode build constraints for store submissions.',
+          'Manage Git/GitHub workflows, feature branching, pull requests, and collaborative code reviews across agile sprints.',
         ],
-        'tech': ['Flutter', 'Dart', 'Provider', 'Cashfree', 'JWT Auth', 'Google Maps', 'Git/GitHub'],
+        'tech': ['Flutter', 'Dart', 'Provider', 'GetX', 'Cashfree', 'Apple IAP', 'StoreKit', 'JWT Auth', 'Dio', 'Google Maps', 'Git/GitHub'],
       },
       {
-        'role': 'Flutter Developer Intern',
-        'type': 'Internship',
-        'company': 'Relie Tech Software Solution',
-        'period': 'Aug 2024 – Nov 2025',
-        'location': 'Puducherry',
+        'role': 'Full-Stack Developer (Flutter & Firebase)',
+        'type': 'Full-Time',
+        'company': 'RelieTech',
+        'period': 'November 2024 – November 2025',
+        'location': 'Puducherry, India',
         'color': AppTheme.accentPurple,
         'current': false,
         'points': [
-          'Built production Flutter applications for Android and iOS with responsive, 60 FPS widget trees and clean UI.',
-          'Configured Firebase backend services, including Authentication, Cloud Firestore real-time DB, and Cloud Storage.',
-          'Integrated REST APIs, handled asynchronous data streams, and resolved platform-specific edge cases with DevTools.',
-          'Collaborated with senior engineers on release testing, QA bug resolution, and Google Play Store deployment.',
+          'Developed cross-platform mobile applications for Android and iOS using Flutter and Dart, and engineered responsive web applications and dynamic websites using Flutter Web, HTML5, and CSS3.',
+          'Engineered and deployed production client applications: Le Pont (Hyperlocal Delivery) and Relie Enquiry (Business Inquiry CRM on Play Store).',
+          'Designed responsive user interfaces adapting smoothly across mobile, tablet, and desktop browser viewports using Material Design 3 and Cupertino widgets.',
+          'Configured Firebase backend services (Authentication, Cloud Firestore real-time DB, Cloud Storage) for scalable application data.',
+          'Integrated REST APIs and managed asynchronous frontend-backend data communication with optimized local caching.',
+          'Engineered reusable Flutter widget libraries, conducted QA bug resolution, app signing, and production release to the Google Play Store.',
         ],
-        'tech': ['Flutter', 'Firebase Auth', 'Firestore', 'Cloud Storage', 'REST APIs', 'DevTools', 'Play Store'],
+        'tech': ['Flutter', 'Dart', 'Flutter Web', 'Firebase Auth', 'Firestore', 'Cloud Storage', 'REST APIs', 'HTML5/CSS3', 'Play Store'],
       },
     ];
 
-    return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: isMobile ? (isSmallMobile ? 16 : 24) : 80,
-        vertical: 70,
-      ),
-      child: Column(
-        children: [
-          SectionHeader(
-            title: 'Work Experience',
-            subtitle: 'Professional engineering track record',
-            isDark: isDark,
-          ),
-          const SizedBox(height: 50),
-          ...List.generate(experiences.length, (index) {
-            final exp = experiences[index];
-            return FadeInUp(
-              delay: Duration(milliseconds: index * 200),
-              child: _buildExperienceCard(
-                isDark: isDark,
-                isMobile: isMobile,
-                exp: exp,
-                isLast: index == experiences.length - 1,
-              ),
-            );
-          }),
-        ],
+    return Center(
+      child: Container(
+        constraints: const BoxConstraints(maxWidth: 1200),
+        padding: EdgeInsets.symmetric(
+          horizontal: isMobile ? (isSmallMobile ? 16 : 24) : 40,
+          vertical: 50,
+        ),
+        child: Column(
+          children: [
+            SectionHeader(
+              title: 'Work Experience',
+              subtitle: 'Professional engineering track record from resume',
+              isDark: isDark,
+            ),
+            const SizedBox(height: 36),
+            ...List.generate(experiences.length, (index) {
+              final exp = experiences[index];
+              return FadeInUp(
+                delay: Duration(milliseconds: index * 200),
+                child: _buildExperienceCard(
+                  isDark: isDark,
+                  isMobile: isMobile,
+                  exp: exp,
+                  isLast: index == experiences.length - 1,
+                ),
+              );
+            }),
+          ],
+        ),
       ),
     );
   }

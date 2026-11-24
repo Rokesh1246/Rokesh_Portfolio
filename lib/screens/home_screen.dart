@@ -257,7 +257,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           // WhatsApp
           IconButton(
-            icon: const Icon(FontAwesomeIcons.whatsapp, size: 17),
+            icon: const FaIcon(FontAwesomeIcons.whatsapp, size: 17),
             color: const Color(0xFF25D366),
             tooltip: 'WhatsApp Quick Chat',
             onPressed: () => UrlHelper.launchWhatsAppChat(),
